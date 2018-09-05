@@ -13,6 +13,7 @@
     echo link_tag('assets/css/dataTables.bootstrap4.css');
     echo link_tag('assets/css/font-awesome.min.css');
     echo link_tag('assets/css/bootstrap-select.min.css');
+    echo link_tag('assets/css/gijgo.min.css');
     echo link_tag('assets/css/sweetalert.min.css');
     if (!empty($styles)) {
         foreach ($styles as $style) {

@@ -38,7 +38,7 @@
     <div class="form-row mb-2">
       <div class="form-group col-md-12">
         <?php echo form_label('Mulai Bekerja', 'karyawan-mulai_kerja') ?>
-        <?php echo form_input(['name' => 'mulai_kerja', 'id' => 'karyawan-mulai_kerja', 'class' => 'form-control', 'value' => $karyawan->mulai_kerja]) ?>
+        <?php echo form_input(['name' => 'mulai_kerja', 'id' => 'karyawan-mulai_kerja', 'class' => 'form-control datepicker', 'value' => $karyawan->mulai_kerja]) ?>
         <div id="feedback-mulai_kerja"></div>
       </div>
     </div>

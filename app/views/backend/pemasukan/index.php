@@ -21,7 +21,7 @@
             <th class="text-center">Pelanggan</th>
             <th class="text-center">Pembayaran</th>
             <th class="text-center">Jumlah</th>
-            <th class="text-center">Kontrol</th>
+            <th class="text-center" width="15%">Kontrol</th>
           </tr>
         </thead>
         <tfoot>
@@ -32,7 +32,7 @@
             <th class="text-center">Pelanggan</th>
             <th class="text-center">Pembayaran</th>
             <th class="text-center">Jumlah</th>
-            <th class="text-center">Kontrol</th>
+            <th class="text-center" width="15%">Kontrol</th>
           </tr>
         </tfoot>
         <tbody>

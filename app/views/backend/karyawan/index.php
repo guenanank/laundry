@@ -1,7 +1,10 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="pull-right">
-      <a href="<?php echo base_url('karyawan/create') ?>" class="btn btn-success" data-toggle="tooltip" data-placement="left" title="Tambah <?php echo $title ?>">
+      <a href="<?php echo base_url('#') ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="left" title="Absensi  <?php echo $title ?>">
+        <i class="fa fa-address-book"></i>
+      </a>&nbsp;
+      <a href="<?php echo base_url('karyawan/create') ?>" class="btn btn-success" data-toggle="tooltip" data-placement="bottom" title="Tambah <?php echo $title ?>">
         <i class="fa fa-plus"></i>
       </a>
     </div>

@@ -20,9 +20,6 @@ class Karyawan extends CI_Controller
         $this->form_validation->set_rules('kontak', 'Kontak', 'trim|required|max_length[15]');
         $this->form_validation->set_rules('bagian', 'Bagian', 'required');
         $this->form_validation->set_rules('mulai_kerja', 'Mulai Bekerja', 'required');
-        $this->form_validation->set_rules('gaji_harian', 'Gaji Harian', 'decimal');
-        $this->form_validation->set_rules('gaji_bulanan', 'Gaji Bulanan', 'decimal');
-        $this->form_validation->set_rules('gaji_lemburan', 'Gaji Lemburan', 'decimal');
     }
 
     public function index()
@@ -53,7 +50,8 @@ class Karyawan extends CI_Controller
 
         $this->output->set_content_type('application/json')
           ->set_status_header($status)
-          ->set_output(json_encode($messege))->_display();
+          ->set_output(json_encode($messege))
+          ->_display();
         exit;
     }
 
@@ -79,7 +77,8 @@ class Karyawan extends CI_Controller
 
         $this->output->set_content_type('application/json')
           ->set_status_header($status)
-          ->set_output(json_encode($messege))->_display();
+          ->set_output(json_encode($messege))
+          ->_display();
         exit;
     }
 
@@ -93,6 +92,7 @@ class Karyawan extends CI_Controller
 
         $this->output
           ->set_content_type('application/json')
+          ->set_status_header(200)
           ->set_output(json_encode([$return]))
           ->_display();
         exit;

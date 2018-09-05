@@ -50,7 +50,8 @@ class Pengeluaran extends CI_Controller
 
         $this->output->set_content_type('application/json')
           ->set_status_header($status)
-          ->set_output(json_encode($messege))->_display();
+          ->set_output(json_encode($messege))
+          ->_display();
         exit;
     }
 
@@ -76,7 +77,8 @@ class Pengeluaran extends CI_Controller
 
         $this->output->set_content_type('application/json')
           ->set_status_header($status)
-          ->set_output(json_encode($messege))->_display();
+          ->set_output(json_encode($messege))
+          ->_display();
         exit;
     }
 
@@ -90,6 +92,7 @@ class Pengeluaran extends CI_Controller
 
         $this->output
           ->set_content_type('application/json')
+          ->set_status_header(200)
           ->set_output(json_encode([$return]))
           ->_display();
         exit;

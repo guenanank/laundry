@@ -38,6 +38,7 @@
 <?php
 // Bootstrap core JavaScript
 echo script_tag('assets/js/jquery-3.3.1.js');
+echo script_tag('assets/js/moment-with-locales.min.js');
 echo script_tag('assets/js/bootstrap.bundle.min.js');
 // Core plugin JavaScript
 echo script_tag('assets/js/jquery.easing.min.js');
@@ -47,6 +48,7 @@ echo script_tag('assets/js/jquery.easing.min.js');
 echo script_tag('assets/js/sweetalert.min.js');
 
 echo script_tag('assets/js/bootstrap-select.bundle.min.js');
+echo script_tag('assets/js/gijgo.min.js');
 echo script_tag('assets/js/jquery.mask.min.js');
 echo script_tag('assets/js/ajaxform.js');
 // Custom scripts for all pages
@@ -80,7 +82,7 @@ if(!empty($scripts)) {
           }
         },
         order: [
-          [0, 'desc']
+          [0, 'asc']
         ]
       });
 
@@ -90,6 +92,11 @@ if(!empty($scripts)) {
       });
 
       $('.selectpicker').selectpicker();
+
+      $('.datepicker').datepicker({
+          format: 'yyyy-dd-mm',
+          uiLibrary: 'bootstrap4'
+      });
 
       $('body').on('click', 'a.delete', function(e) {
         e.preventDefault();

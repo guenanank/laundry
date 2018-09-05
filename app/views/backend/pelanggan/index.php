@@ -38,6 +38,9 @@
               <td><?php echo $plg->alamat ?></td>
               <td><?php echo $plg->telepon ?></td>
               <td class="text-center">
+                <a href="<?php echo base_url('harga/index/' . $plg->id) ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Harga <?php echo $plg->nama ?>">
+                  <i class="fa fa-shopping-cart"></i>
+                </a>&nbsp;
                 <a href="<?php echo base_url('pelanggan/edit/' . $plg->id) ?>" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Ubah <?php echo $plg->nama ?>">
                   <i class="fa fa-edit"></i>
                 </a>&nbsp;
