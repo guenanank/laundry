@@ -80,10 +80,7 @@ if(!empty($scripts)) {
             "sNext": "Selanjutnya",
             "sLast": "Terakhir"
           }
-        },
-        order: [
-          [0, 'asc']
-        ]
+        }
       });
 
       $('form.ajaxform').submit(function(e) {
@@ -94,8 +91,8 @@ if(!empty($scripts)) {
       $('.selectpicker').selectpicker();
 
       $('.datepicker').datepicker({
-          format: 'yyyy-dd-mm',
-          uiLibrary: 'bootstrap4'
+        format: 'yyyy-dd-mm',
+        uiLibrary: 'bootstrap4'
       });
 
       $('body').on('click', 'a.delete', function(e) {
