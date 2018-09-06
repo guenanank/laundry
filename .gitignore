@@ -17,4 +17,4 @@ application/logs/*
 /vendor/
 
 #application config
-#app/config/database.php
+app/config/database.php
