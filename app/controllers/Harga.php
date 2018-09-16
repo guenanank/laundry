@@ -28,9 +28,9 @@ class Harga extends CI_Controller
     {
         $pelanggan = $this->pelanggan->get($id_pelanggan);
         $harga = $this->harga->with('barang')->with('cuci')->get_many_by('id_pelanggan', $id_pelanggan);
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/harga/index', compact('pelanggan', 'harga'));
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('harga/index', compact('pelanggan', 'harga'));
+        $this->load->view('footer');
     }
 
     public function create($id_pelanggan)
@@ -38,9 +38,9 @@ class Harga extends CI_Controller
         $pelanggan = $this->pelanggan->get($id_pelanggan);
         $barang = $this->barang->dropdown('nama');
         $cuci = $this->cuci->dropdown('nama');
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/harga/create', compact('pelanggan', 'barang', 'cuci'));
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('harga/create', compact('pelanggan', 'barang', 'cuci'));
+        $this->load->view('footer');
     }
 
     public function insert()
@@ -53,10 +53,9 @@ class Harga extends CI_Controller
             $messege = $this->form_validation->error_array();
         }
 
-        $this->output->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header($status)
-          ->set_output(json_encode($messege))
-          ->_display();
+          ->set_output(json_encode($messege));
         exit;
     }
 
@@ -68,9 +67,9 @@ class Harga extends CI_Controller
         $barang = $this->barang->dropdown('nama');
         $cuci = $this->cuci->dropdown('nama');
         $harga = $this->harga->get_by($where);
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/harga/edit', compact('harga', 'pelanggan', 'barang', 'cuci'));
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('harga/edit', compact('harga', 'pelanggan', 'barang', 'cuci'));
+        $this->load->view('footer');
     }
 
     public function update()
@@ -94,10 +93,9 @@ class Harga extends CI_Controller
             $messege = $this->form_validation->error_array();
         }
 
-        $this->output->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header($status)
-          ->set_output(json_encode($messege))
-          ->_display();
+          ->set_output(json_encode($messege));
         exit;
     }
 
@@ -116,11 +114,9 @@ class Harga extends CI_Controller
             ]);
         }
 
-        $this->output
-          ->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header(200)
-          ->set_output(json_encode([$return]))
-          ->_display();
+          ->set_output(json_encode([$return]));
         exit;
     }
 }

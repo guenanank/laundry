@@ -22,16 +22,16 @@ class Barang extends CI_Controller
     public function index()
     {
         $barang = $this->barang->get_all();
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/barang/index', compact('barang'));
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('barang/index', compact('barang'));
+        $this->load->view('footer');
     }
 
     public function create()
     {
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/barang/create');
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('barang/create');
+        $this->load->view('footer');
     }
 
     public function insert()
@@ -44,19 +44,18 @@ class Barang extends CI_Controller
             $messege = $this->form_validation->error_array();
         }
 
-        $this->output->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header($status)
-          ->set_output(json_encode($messege))
-          ->_display();
+          ->set_output(json_encode($messege));
         exit;
     }
 
     public function edit($id = null)
     {
         $barang = $this->barang->get($id);
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/barang/edit', compact('barang'));
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('barang/edit', compact('barang'));
+        $this->load->view('footer');
     }
 
     public function update($id = null)
@@ -70,10 +69,9 @@ class Barang extends CI_Controller
             $messege = $this->form_validation->error_array();
         }
 
-        $this->output->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header($status)
-          ->set_output(json_encode($messege))
-          ->_display();
+          ->set_output(json_encode($messege));
         exit;
     }
 
@@ -85,12 +83,9 @@ class Barang extends CI_Controller
             $return = $this->barang->delete($barang->id);
         }
 
-        $this->output
-          ->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header(200)
           ->set_output(json_encode([$return]))
-          ->_display();
         exit;
-
     }
 }

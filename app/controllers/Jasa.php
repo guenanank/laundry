@@ -22,16 +22,16 @@ class Jasa extends CI_Controller
     public function index()
     {
         $jasa = $this->jasa->get_all();
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/jasa/index', compact('jasa'));
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('jasa/index', compact('jasa'));
+        $this->load->view('footer');
     }
 
     public function create()
     {
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/jasa/create');
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('jasa/create');
+        $this->load->view('footer');
     }
 
     public function insert()
@@ -44,19 +44,18 @@ class Jasa extends CI_Controller
             $messege = $this->form_validation->error_array();
         }
 
-        $this->output->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header($status)
-          ->set_output(json_encode($messege))
-          ->_display();
+          ->set_output(json_encode($messege));
         exit;
     }
 
     public function edit($id = null)
     {
         $jasa = $this->jasa->get($id);
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/jasa/edit', compact('jasa'));
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('jasa/edit', compact('jasa'));
+        $this->load->view('footer');
     }
 
     public function update($id = null)
@@ -70,10 +69,9 @@ class Jasa extends CI_Controller
             $messege = $this->form_validation->error_array();
         }
 
-        $this->output->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header($status)
-          ->set_output(json_encode($messege))
-          ->_display();
+          ->set_output(json_encode($messege));
         exit;
     }
 
@@ -85,11 +83,9 @@ class Jasa extends CI_Controller
             $return = $this->jasa->delete($jasa->id);
         }
 
-        $this->output
-          ->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header(200)
-          ->set_output(json_encode([$return]))
-          ->_display();
+          ->set_output(json_encode([$return]));
         exit;
 
     }

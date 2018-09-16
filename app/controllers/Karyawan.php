@@ -25,17 +25,17 @@ class Karyawan extends CI_Controller
     public function index()
     {
         $karyawan = $this->karyawan->get_all();
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/karyawan/index', compact('karyawan'));
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('karyawan/index', compact('karyawan'));
+        $this->load->view('footer');
     }
 
     public function create()
     {
         $bagian = $this->karyawan->bagian();
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/karyawan/create', compact('bagian'));
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('karyawan/create', compact('bagian'));
+        $this->load->view('footer');
     }
 
     public function insert()
@@ -48,10 +48,9 @@ class Karyawan extends CI_Controller
             $messege = $this->form_validation->error_array();
         }
 
-        $this->output->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header($status)
-          ->set_output(json_encode($messege))
-          ->_display();
+          ->set_output(json_encode($messege));
         exit;
     }
 
@@ -59,9 +58,9 @@ class Karyawan extends CI_Controller
     {
         $karyawan = $this->karyawan->get($id);
         $bagian = $this->karyawan->bagian();
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/karyawan/edit', compact('karyawan', 'bagian'));
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('karyawan/edit', compact('karyawan', 'bagian'));
+        $this->load->view('footer');
     }
 
     public function update($id = null)
@@ -75,10 +74,9 @@ class Karyawan extends CI_Controller
             $messege = $this->form_validation->error_array();
         }
 
-        $this->output->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header($status)
-          ->set_output(json_encode($messege))
-          ->_display();
+          ->set_output(json_encode($messege));
         exit;
     }
 
@@ -86,16 +84,13 @@ class Karyawan extends CI_Controller
     {
         $karyawan = $this->karyawan->get($id);
         $return = false;
-        if (!empty($karyawan)) {
+        if (empty($karyawan) == false) {
             $return = $this->karyawan->delete($karyawan->id);
         }
 
-        $this->output
-          ->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header(200)
-          ->set_output(json_encode([$return]))
-          ->_display();
+          ->set_output(json_encode([$return]));
         exit;
-
     }
 }

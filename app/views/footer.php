@@ -54,13 +54,11 @@ echo script_tag('assets/js/ajaxform.js');
 // Custom scripts for all pages
 if(!empty($scripts)) {
   foreach($scripts as $script) {
-    echo script_tag($script);
+    echo script_tag(sprintf('assets/js/%s.js', $script));
   }
 }
 ?>
   <script type="text/javascript">
-
-
     $(document).ready(function() {
       $("#dataTable").DataTable({
         language: {

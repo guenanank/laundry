@@ -22,16 +22,16 @@ class Pelanggan extends CI_Controller
     public function index()
     {
         $pelanggan = $this->pelanggan->get_all();
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/pelanggan/index', compact('pelanggan'));
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('pelanggan/index', compact('pelanggan'));
+        $this->load->view('footer');
     }
 
     public function create()
     {
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/pelanggan/create');
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('pelanggan/create');
+        $this->load->view('footer');
     }
 
     public function insert()
@@ -44,19 +44,18 @@ class Pelanggan extends CI_Controller
             $messege = $this->form_validation->error_array();
         }
 
-        $this->output->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header($status)
-          ->set_output(json_encode($messege))
-          ->_display();
+          ->set_output(json_encode($messege));
         exit;
     }
 
     public function edit($id = null)
     {
         $pelanggan = $this->pelanggan->get($id);
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/pelanggan/edit', compact('pelanggan'));
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('pelanggan/edit', compact('pelanggan'));
+        $this->load->view('footer');
     }
 
     public function update($id = null)
@@ -70,10 +69,9 @@ class Pelanggan extends CI_Controller
             $messege = $this->form_validation->error_array();
         }
 
-        $this->output->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header($status)
-          ->set_output(json_encode($messege))
-          ->_display();
+          ->set_output(json_encode($messege));
         exit;
     }
 
@@ -85,11 +83,9 @@ class Pelanggan extends CI_Controller
             $return = $this->pelanggan->delete($pelanggan->id);
         }
 
-        $this->output
-          ->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header(200)
-          ->set_output(json_encode([$return]))
-          ->_display();
+          ->set_output(json_encode([$return]));
         exit;
 
     }

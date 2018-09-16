@@ -18,8 +18,8 @@ class Dasbor extends CI_Controller
 
     public function index()
     {
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/dashboard');
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('dashboard');
+        $this->load->view('footer');
     }
 }

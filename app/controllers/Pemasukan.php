@@ -11,6 +11,8 @@ class Pemasukan extends CI_Controller
 {
     protected $title = 'Data Pemasukan';
 
+    protected $scripts = ['pemasukan'];
+
     public function __construct()
     {
         parent::__construct();
@@ -29,9 +31,9 @@ class Pemasukan extends CI_Controller
     public function index()
     {
         $pemasukan = $this->pemasukan->with('pelanggan')->get_all();
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/pemasukan/index', compact('pemasukan'));
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('pemasukan/index', compact('pemasukan'));
+        $this->load->view('footer');
     }
 
     public function create()
@@ -40,9 +42,9 @@ class Pemasukan extends CI_Controller
         $jenis = $this->pemasukan->jenis();
         $cara_bayar = $this->pemasukan->cara_bayar();
         $pelanggan = $this->pelanggan->dropdown('nama');
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/pemasukan/create', compact('nomer', 'jenis', 'cara_bayar', 'pelanggan'));
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title, 'scripts' => $this->scripts]);
+        $this->load->view('pemasukan/create', compact('nomer', 'jenis', 'cara_bayar', 'pelanggan'));
+        $this->load->view('footer');
     }
 
     public function insert()
@@ -55,10 +57,9 @@ class Pemasukan extends CI_Controller
             $messege = $this->form_validation->error_array();
         }
 
-        $this->output->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header($status)
-          ->set_output(json_encode($messege))
-          ->_display();
+          ->set_output(json_encode($messege));
         exit;
     }
 
@@ -68,9 +69,9 @@ class Pemasukan extends CI_Controller
         $jenis = $this->pemasukan->jenis();
         $cara_bayar = $this->pemasukan->cara_bayar();
         $pelanggan = $this->pelanggan->dropdown('nama');
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/pemasukan/edit', compact('pemasukan', 'jenis', 'cara_bayar', 'pelanggan'));
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('pemasukan/edit', compact('pemasukan', 'jenis', 'cara_bayar', 'pelanggan'));
+        $this->load->view('footer');
     }
 
     public function update($id = null)
@@ -84,10 +85,9 @@ class Pemasukan extends CI_Controller
             $messege = $this->form_validation->error_array();
         }
 
-        $this->output->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header($status)
-          ->set_output(json_encode($messege))
-          ->_display();
+          ->set_output(json_encode($messege));
         exit;
     }
 
@@ -99,11 +99,9 @@ class Pemasukan extends CI_Controller
             $return = $this->pemasukan->delete($pemasukan->id);
         }
 
-        $this->output
-          ->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header(200)
-          ->set_output(json_encode([$return]))
-          ->_display();
+          ->set_output(json_encode([$return]));
         exit;
 
     }

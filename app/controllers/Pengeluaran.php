@@ -25,17 +25,17 @@ class Pengeluaran extends CI_Controller
     public function index()
     {
         $pengeluaran = $this->pengeluaran->get_all();
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/pengeluaran/index', compact('pengeluaran'));
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('pengeluaran/index', compact('pengeluaran'));
+        $this->load->view('footer');
     }
 
     public function create()
     {
         $jenis = $this->pengeluaran->jenis();
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/pengeluaran/create', compact('jenis'));
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('pengeluaran/create', compact('jenis'));
+        $this->load->view('footer');
     }
 
     public function insert()
@@ -48,10 +48,9 @@ class Pengeluaran extends CI_Controller
             $messege = $this->form_validation->error_array();
         }
 
-        $this->output->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header($status)
-          ->set_output(json_encode($messege))
-          ->_display();
+          ->set_output(json_encode($messege));
         exit;
     }
 
@@ -59,9 +58,9 @@ class Pengeluaran extends CI_Controller
     {
         $pengeluaran = $this->pengeluaran->get($id);
         $jenis = $this->pengeluaran->jenis();
-        $this->load->view('backend/header', ['title' => $this->title]);
-        $this->load->view('backend/pengeluaran/edit', compact('pengeluaran', 'jenis'));
-        $this->load->view('backend/footer');
+        $this->load->view('header', ['title' => $this->title]);
+        $this->load->view('pengeluaran/edit', compact('pengeluaran', 'jenis'));
+        $this->load->view('footer');
     }
 
     public function update($id = null)
@@ -75,10 +74,9 @@ class Pengeluaran extends CI_Controller
             $messege = $this->form_validation->error_array();
         }
 
-        $this->output->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header($status)
-          ->set_output(json_encode($messege))
-          ->_display();
+          ->set_output(json_encode($messege));
         exit;
     }
 
@@ -90,11 +88,9 @@ class Pengeluaran extends CI_Controller
             $return = $this->pengeluaran->delete($pengeluaran->id);
         }
 
-        $this->output
-          ->set_content_type('application/json')
+        return $this->output->set_content_type('application/json')
           ->set_status_header(200)
           ->set_output(json_encode([$return]))
-          ->_display();
         exit;
 
     }

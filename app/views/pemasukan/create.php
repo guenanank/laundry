@@ -30,11 +30,11 @@
     <div class="form-row mb-2">
       <div class="form-group col-md-12">
         <?php echo form_label('Tanggal', 'pemasukan-tanggal') ?>
-        <?php echo form_input(['name' => 'tanggal', 'id' => 'pemasukan-tanggal', 'class' => 'form-control', 'placeholder' => sprintf('Tanggal %s', $title)]) ?>
+        <?php echo form_input(['name' => 'tanggal', 'id' => 'pemasukan-tanggal', 'class' => 'form-control datepicker', 'placeholder' => sprintf('Tanggal %s', $title)]) ?>
         <div id="feedback-tanggal"></div>
       </div>
     </div>
-    <div class="form-row mb-2">
+    <div class="form-row mb-2 pelanggan">
       <div class="form-group col-md-12">
         <?php echo form_label('Pelanggan', 'pemasukan-id_pelanggan') ?>
         <?php echo form_dropdown('id_pelanggan', $pelanggan, null, ['class' => 'form-control selectpicker', 'id' => 'pemasukan-id_pelanggan', 'data-live-search' => 'true', 'title' => sprintf('Pilih Pelanggan %s', $title)]) ?>
@@ -67,7 +67,7 @@
         <div id="feedback-catatan"></div>
       </div>
     </div>
-    <?php include APPPATH . 'views/backend/button_form.php' ?>
+    <?php include APPPATH . 'views/button_form.php' ?>
     <?php echo form_close() ?>
   </div>
 </div>
