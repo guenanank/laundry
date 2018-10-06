@@ -33,59 +33,59 @@
       </div>
     </div>
 
-    <div class="form-row mb-2" id="ongkos">
+    <div class="form-row mb-2 ongkos" id="ongkos">
       <div class="form-group col-md-12">
         <?php echo form_label('Ongkos', 'jasa-ongkos') ?>
-        <?php echo form_input(['name' => 'ongkos', 'id' => 'jasa-ongkos', 'class' => 'form-control', 'placeholder' => sprintf('Ongkos %s', $title)]) ?>
+        <?php echo form_input(['name' => 'ongkos', 'id' => 'jasa-ongkos', 'class' => 'form-control', 'data-mask' => '000,000,000,000,000', 'data-mask-reverse' => 'true', 'placeholder' => sprintf('Ongkos %s', $title)]) ?>
         <div id="feedback-ongkos"></div>
       </div>
     </div>
 
-    <div class="form-row mb-2" id="klaim">
+    <div class="form-row mb-2 klaim" id="klaim">
       <div class="form-group col-md-12">
         <?php echo form_label('Klaim', 'jasa-klaim') ?>
-        <?php echo form_input(['name' => 'klaim', 'id' => 'jasa-klaim', 'class' => 'form-control', 'placeholder' => sprintf('Klaim %s', $title)]) ?>
+        <?php echo form_input(['name' => 'klaim', 'id' => 'jasa-klaim', 'class' => 'form-control', 'data-mask' => '000,000,000,000,000', 'data-mask-reverse' => 'true', 'placeholder' => sprintf('Klaim %s', $title)]) ?>
         <div id="feedback-klaim"></div>
       </div>
     </div>
 
-    <div class="form-row mb-2" id="open">
+    <div class="form-row mb-2 open" id="open">
       <div class="form-group col-md-12">
         <?php echo form_label('Open', 'jasa-open') ?>
-        <?php echo form_input(['name' => 'open', 'id' => 'jasa-open', 'class' => 'form-control', 'placeholder' => sprintf('Open %s', $title)]) ?>
+        <?php echo form_input(['name' => 'open', 'id' => 'jasa-open', 'class' => 'form-control', 'data-mask' => '000,000,000,000,000', 'data-mask-reverse' => 'true', 'placeholder' => sprintf('Open %s', $title)]) ?>
         <div id="feedback-open"></div>
       </div>
     </div>
 
     <hr />
 
-    <div class="form-row mb-2" id="barang">
+    <div class="form-row mb-2 barang" id="barang">
       <div class="form-group col-md-4">
         <?php echo form_label('Barang', 'jasa-id_barang') ?>
-        <select name="id_barang" class="form-control selectpicker" id="jasa-brand_id" data-live-search="true" title="Pilih Master Data Barang">
-        </select>
+        <?php echo form_dropdown('id_barang', $barang, null, ['class' => 'form-control selectpicker', 'id' => 'jasa-id_barang', 'title' => sprintf('Pilih %s', $title), 'data-live-search' => 'true']) ?>
         <div id="feedback-id_barang"></div>
       </div>
 
       <div class="form-group col-md-2">
         <?php echo form_label('Ongkos', 'jasa-ongkos') ?>
-        <?php echo form_input(['name' => 'ongkos', 'id' => 'jasa-ongkos', 'class' => 'form-control', 'placeholder' => sprintf('Ongkos %s', $title)]) ?>
+        <?php echo form_input(['name' => 'ongkos', 'id' => 'jasa-ongkos', 'class' => 'form-control', 'data-mask' => '000,000,000,000,000', 'data-mask-reverse' => 'true', 'placeholder' => sprintf('Ongkos %s', $title)]) ?>
         <div id="feedback-ongkos"></div>
       </div>
 
       <div class="form-group col-md-2">
         <?php echo form_label('Klaim', 'jasa-klaim') ?>
-        <?php echo form_input(['name' => 'klaim', 'id' => 'jasa-klaim', 'class' => 'form-control', 'placeholder' => sprintf('Klaim %s', $title)]) ?>
+        <?php echo form_input(['name' => 'klaim', 'id' => 'jasa-klaim', 'class' => 'form-control', 'data-mask' => '000,000,000,000,000', 'data-mask-reverse' => 'true', 'placeholder' => sprintf('Klaim %s', $title)]) ?>
         <div id="feedback-klaim"></div>
       </div>
 
       <div class="form-group col-md-2">
         <?php echo form_label('Open', 'jasa-open') ?>
-        <?php echo form_input(['name' => 'open', 'id' => 'jasa-open', 'class' => 'form-control', 'placeholder' => sprintf('Open %s', $title)]) ?>
+        <?php echo form_input(['name' => 'open', 'id' => 'jasa-open', 'class' => 'form-control', 'data-mask' => '000,000,000,000,000', 'data-mask-reverse' => 'true', 'placeholder' => sprintf('Open %s', $title)]) ?>
         <div id="feedback-open"></div>
       </div>
 
       <div class="form-group col-md-2">
+        <?php echo form_label('&nbsp;') ?>
         <button class="btn btn-warning" type="button" id="tambah">
             <i class="fa fa-cart-arrow-down"></i> Tambah
         </button>

@@ -23,7 +23,7 @@ class Pemasukan extends CI_Controller
         $this->form_validation->set_rules('id_pelanggan', 'Pelanggan', 'numeric');
         $this->form_validation->set_rules('jenis', 'Jenis', 'trim');
         $this->form_validation->set_rules('tanggal', 'Tanggal', 'required');
-        $this->form_validation->set_rules('jumlah', 'Jumlah', 'required|numeric');
+        $this->form_validation->set_rules('jumlah', 'Jumlah', 'required');
         $this->form_validation->set_rules('cara_bayar', 'Cara Pembayaran', 'trim');
         $this->form_validation->set_rules('catatan', 'Catatan', 'trim');
     }

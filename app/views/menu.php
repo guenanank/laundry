@@ -37,7 +37,7 @@
         <ul class="sidenav-second-level collapse" id="administrasi">
           <li><?php echo anchor('pemasukan', 'Pemasukan') ?></li>
           <li><?php echo anchor('pengeluaran', 'Pengeluaran') ?></li>
-          <li><?php echo anchor('gaji', 'Gaji') ?></li>
+          <!-- <li><?php echo anchor('gaji', 'Gaji') ?></li> -->
         </ul>
       </li>
       <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Laporan">

@@ -16,14 +16,14 @@
     <div class="form-row mb-2">
       <div class="form-group col-md-12">
         <?php echo form_label('Jenis', 'pengeluaran-jenis') ?>
-        <?php echo form_dropdown('jenis', $jenis, [camelize($pengeluaran->jenis)], ['class' => 'form-control selectpicker', 'id' => 'pengeluaran-jenis', 'title' => sprintf('Pilih Jenis %s', $title)]) ?>
+        <?php echo form_dropdown('jenis', $jenis, [camelize($pengeluaran->jenis)], ['class' => 'form-control selectpicker', 'id' => 'pengeluaran-jenis', 'title' => sprintf('Pilih Jenis %s', $title), 'disabled' => true]) ?>
         <div id="feedback-jenis"></div>
       </div>
     </div>
     <div class="form-row mb-2">
       <div class="form-group col-md-12">
         <?php echo form_label('Tanggal', 'pengeluaran-tanggal') ?>
-        <?php echo form_input(['name' => 'tanggal', 'id' => 'pengeluaran-tanggal', 'class' => 'form-control', 'value' => $pengeluaran->tanggal]) ?>
+        <?php echo form_input(['name' => 'tanggal', 'id' => 'pengeluaran-tanggal', 'class' => 'form-control', 'value' => $pengeluaran->tanggal, 'readonly' => true]) ?>
         <div id="feedback-tanggal"></div>
       </div>
     </div>

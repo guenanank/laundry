@@ -85,7 +85,7 @@ class Barang extends CI_Controller
 
         return $this->output->set_content_type('application/json')
           ->set_status_header(200)
-          ->set_output(json_encode([$return]))
+          ->set_output(json_encode([$return]));
         exit;
     }
 }

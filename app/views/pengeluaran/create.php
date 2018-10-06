@@ -23,7 +23,7 @@
     <div class="form-row mb-2">
       <div class="form-group col-md-12">
         <?php echo form_label('Tanggal', 'pengeluaran-tanggal') ?>
-        <?php echo form_input(['name' => 'tanggal', 'id' => 'pengeluaran-tanggal', 'class' => 'form-control', 'placeholder' => sprintf('Tanggal %s', $title)]) ?>
+        <?php echo form_input(['name' => 'tanggal', 'id' => 'pengeluaran-tanggal', 'class' => 'form-control datepicker', 'placeholder' => sprintf('Tanggal %s', $title)]) ?>
         <div id="feedback-tanggal"></div>
       </div>
     </div>

@@ -11,10 +11,13 @@ class Jasa extends CI_Controller
 {
     protected $title = 'Master Data Jasa Cucian';
 
+    protected $scripts = ['jasa'];
+
     public function __construct()
     {
         parent::__construct();
         $this->load->model('Jasa_model', 'jasa');
+        $this->load->model('Barang_model', 'barang');
 
         $this->form_validation->set_rules('nama', 'Nama', 'trim|required|max_length[127]');
     }
@@ -29,8 +32,9 @@ class Jasa extends CI_Controller
 
     public function create()
     {
-        $this->load->view('header', ['title' => $this->title]);
-        $this->load->view('jasa/create');
+        $barang = $this->barang->dropdown('nama');
+        $this->load->view('header', ['title' => $this->title, 'scripts' => $this->scripts]);
+        $this->load->view('jasa/create', compact('barang'));
         $this->load->view('footer');
     }
 

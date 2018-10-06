@@ -18,10 +18,9 @@
             <th class="text-center">Nomer</th>
             <th class="text-center">Tanggal</th>
             <th class="text-center">Jenis</th>
-            <th class="text-center">Pelanggan</th>
             <th class="text-center">Pembayaran</th>
             <th class="text-center">Jumlah</th>
-            <th class="text-center" width="15%">Kontrol</th>
+            <th class="text-center" width="20%">Kontrol</th>
           </tr>
         </thead>
         <tfoot>
@@ -29,7 +28,6 @@
             <th class="text-center">Nomer</th>
             <th class="text-center">Tanggal</th>
             <th class="text-center">Jenis</th>
-            <th class="text-center">Pelanggan</th>
             <th class="text-center">Pembayaran</th>
             <th class="text-center">Jumlah</th>
             <th class="text-center" width="15%">Kontrol</th>
@@ -42,15 +40,22 @@
             <tr>
               <td class="text-center"><strong class="text-primary"><?php echo $pmsk->nomer ?></strong></td>
               <td class="text-center"><?php echo $pmsk->tanggal ?></td>
-              <td class="text-center"><?php echo $pmsk->jenis ?></td>
-              <td><?php echo empty($pmsk->pelanggan) ? null : $pmsk->pelanggan->nama ?></td>
+              <td class="text-center">
+                <?php echo $pmsk->jenis ?><br />
+                <?php echo empty($pmsk->pelanggan) ? null : sprintf('(%s)', $pmsk->pelanggan->nama) ?>
+              </td>
               <td class="text-center"><?php echo $pmsk->cara_bayar ?></td>
               <td class="text-right">Rp. <?php echo $pmsk->jumlah ?></td>
               <td class="text-center">
-                <a href="<?php echo base_url('pemasukan/edit/' . $pmsk->id) ?>" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Ubah <?php echo $pmsk->nomer ?>">
+                <?php if($pmsk->jenis != 'Penambahan Biaya') { ?>
+                  <a href="#" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Cetak <?php echo sprintf('%s %s', $title, $pmsk->nomer) ?>">
+                    <i class="fa fa-print"></i>
+                  </a>&nbsp;
+                <?php } ?>
+                <a href="<?php echo base_url('pemasukan/edit/' . $pmsk->id) ?>" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Ubah <?php echo sprintf('%s %s', $title, $pmsk->nomer) ?>">
                   <i class="fa fa-edit"></i>
                 </a>&nbsp;
-                <a href="<?php echo base_url('pemasukan/delete/' . $pmsk->id) ?>" class="btn btn-danger delete" data-toggle="tooltip" data-placement="top" title="Hapus <?php echo $pmsk->nomer ?>?">
+                <a href="<?php echo base_url('pemasukan/delete/' . $pmsk->id) ?>" class="btn btn-danger delete" data-toggle="tooltip" data-placement="top" title="Hapus <?php echo sprintf('%s %s', $title, $pmsk->nomer) ?>?">
                   <i class="fa fa-trash"></i>
                 </a>
               </td>

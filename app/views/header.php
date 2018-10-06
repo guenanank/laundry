@@ -16,7 +16,7 @@
     echo link_tag('assets/css/sweetalert.min.css');
     if (!empty($styles)) {
         foreach ($styles as $style) {
-            echo link_tag($style);
+            echo link_tag(sprintf('assets/css/%s.css', $style));
         }
     }
     echo link_tag('assets/css/spinner.css');

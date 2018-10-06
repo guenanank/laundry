@@ -16,8 +16,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
      public $belongs_to = ['pelanggan' => ['primary_key' => 'id_pelanggan', 'model' => 'pelanggan_model']];
 
      public $after_get = ['get_jenis', 'get_cara_bayar', 'get_jumlah'];
-     public $before_create = ['created_at'];
-     public $before_update = ['updated_at'];
+     public $before_create = ['set_jumlah', 'created_at'];
+     public $before_update = ['set_jumlah', 'updated_at'];
 
      public function __construct()
      {

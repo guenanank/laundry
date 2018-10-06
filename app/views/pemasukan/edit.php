@@ -23,24 +23,26 @@
     <div class="form-row mb-2">
       <div class="form-group col-md-12">
         <?php echo form_label('Jenis', 'pemasukan-jenis') ?>
-        <?php echo form_dropdown('jenis', $jenis, [camelize($pemasukan->jenis)], ['class' => 'form-control selectpicker', 'id' => 'pemasukan-jenis', 'title' => sprintf('Pilih Jenis %s', $title)]) ?>
+        <?php echo form_dropdown('jenis', $jenis, [camelize($pemasukan->jenis)], ['class' => 'form-control selectpicker', 'id' => 'pemasukan-jenis', 'title' => sprintf('Pilih Jenis %s', $title), 'disabled' => true]) ?>
         <div id="feedback-jenis"></div>
       </div>
     </div>
     <div class="form-row mb-2">
       <div class="form-group col-md-12">
         <?php echo form_label('Tanggal', 'pemasukan-tanggal') ?>
-        <?php echo form_input(['name' => 'tanggal', 'id' => 'pemasukan-tanggal', 'class' => 'form-control', 'value' => $pemasukan->tanggal]) ?>
+        <?php echo form_input(['name' => 'tanggal', 'id' => 'pemasukan-tanggal', 'class' => 'form-control', 'value' => $pemasukan->tanggal, 'readonly' => true]) ?>
         <div id="feedback-tanggal"></div>
       </div>
     </div>
+    <?php if($pemasukan->jenis != 'Penambahan Biaya') { ?>
     <div class="form-row mb-2">
       <div class="form-group col-md-12">
         <?php echo form_label('Pelanggan', 'pemasukan-id_pelanggan') ?>
-        <?php echo form_dropdown('id_pelanggan', $pelanggan, [$pemasukan->id_pelanggan], ['class' => 'form-control selectpicker', 'id' => 'pemasukan-id_pelanggan', 'data-live-search' => 'true', 'title' => sprintf('Pilih Pelanggan %s', $title)]) ?>
+        <?php echo form_dropdown('id_pelanggan', $pelanggan, [$pemasukan->id_pelanggan], ['class' => 'form-control selectpicker', 'id' => 'pemasukan-id_pelanggan', 'data-live-search' => 'true', 'title' => sprintf('Pilih Pelanggan %s', $title), 'disabled' => true]) ?>
         <div id="feedback-id_pelanggan"></div>
       </div>
     </div>
+    <?php } ?>
     <div class="form-row mb-2">
       <div class="form-group col-md-12">
         <?php echo form_label('Jumlah', 'pemasukan-jumlah') ?>
