@@ -40,6 +40,10 @@ class Pengeluaran extends CI_Controller
 
     public function insert()
     {
+        if ($this->input->is_ajax_request() == false) {
+            show_404();
+        }
+
         if ($this->form_validation->run()) {
             $status = 200;
             $messege = ['create' => $this->pengeluaran->insert($this->input->post())];
@@ -65,6 +69,10 @@ class Pengeluaran extends CI_Controller
 
     public function update($id = null)
     {
+        if ($this->input->is_ajax_request() == false) {
+            show_404();
+        }
+
         $pengeluaran = $this->pengeluaran->get($id);
         if ($this->form_validation->run()) {
             $status = 200;
@@ -82,6 +90,10 @@ class Pengeluaran extends CI_Controller
 
     public function delete($id = null)
     {
+        if ($this->input->is_ajax_request() == false) {
+            show_404();
+        }
+      
         $pengeluaran = $this->pengeluaran->get($id);
         $return = false;
         if (!empty($pengeluaran)) {
@@ -92,6 +104,5 @@ class Pengeluaran extends CI_Controller
           ->set_status_header(200)
           ->set_output(json_encode([$return]));
         exit;
-
     }
 }

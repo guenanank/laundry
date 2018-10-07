@@ -45,6 +45,10 @@ class Harga extends CI_Controller
 
     public function insert()
     {
+        if ($this->input->is_ajax_request() == false) {
+            show_404();
+        }
+
         if ($this->form_validation->run()) {
             $status = 200;
             $messege = ['create' => $this->harga->insert($this->input->post())];
@@ -74,6 +78,10 @@ class Harga extends CI_Controller
 
     public function update()
     {
+        if ($this->input->is_ajax_request() == false) {
+            show_404();
+        }
+
         $where = [
           'id_pelanggan' => $this->input->post('id_pelanggan'),
           'id_barang' => $this->input->post('id_barang'),
@@ -101,6 +109,10 @@ class Harga extends CI_Controller
 
     public function delete()
     {
+        if ($this->input->is_ajax_request() == false) {
+            show_404();
+        }
+      
         list($id_pelanggan, $id_barang, $id_cuci) = func_get_args();
         $where = ['id_pelanggan' => $id_pelanggan, 'id_barang' => $id_barang, 'id_cuci' => $id_cuci];
         $harga = $this->harga->get_by($where);
@@ -117,6 +129,31 @@ class Harga extends CI_Controller
         return $this->output->set_content_type('application/json')
           ->set_status_header(200)
           ->set_output(json_encode([$return]));
+        exit;
+    }
+
+    public function cek_harga($id_pelanggan)
+    {
+        if ($this->input->is_ajax_request() == false) {
+            show_404();
+        }
+
+        $return = [];
+        $barang = $this->barang->dropdown('nama');
+        $cuci = $this->cuci->dropdown('nama');
+        $this->harga->after_get = [];
+        foreach ($this->harga->get_many_by('id_pelanggan', $id_pelanggan) as $harga) {
+            $return['barang'][$harga->id_barang] = $barang[$harga->id_barang];
+            $return['cuci'][$harga->id_barang][$harga->id_cuci] = [
+              'nama' => $cuci[$harga->id_cuci],
+              'tunai' => $harga->tunai,
+              'cicil' => $harga->cicil
+            ];
+        }
+
+        return $this->output->set_content_type('application/json')
+          ->set_status_header(200)
+          ->set_output(json_encode($return));
         exit;
     }
 }

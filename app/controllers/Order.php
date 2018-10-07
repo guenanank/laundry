@@ -3,35 +3,40 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * Description of Cuci
+ * Description of Order
  *
  * @author nanank
  */
-class Cuci extends CI_Controller
+class Order extends CI_Controller
 {
-    protected $title = 'Master Data Cucian';
+    protected $title = 'Data Order';
+
+    protected $scripts = ['order'];
 
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('Order_model', 'order');
+        $this->load->model('Pelanggan_model', 'pelanggan');
+        $this->load->model('Barang_model', 'barang');
         $this->load->model('Cuci_model', 'cuci');
-
-        $this->form_validation->set_rules('nama', 'Nama', 'trim|required|max_length[127]');
     }
 
     public function index()
     {
-        $cuci = $this->cuci->get_all();
+        $order = $this->order->with('pelanggan')->get_all();
         $this->load->view('header', ['title' => $this->title]);
-        $this->load->view('cuci/index', compact('cuci'));
+        $this->load->view('order/index', compact('order'));
         $this->load->view('footer');
     }
 
     public function create()
     {
+        $nomer = $this->order->nomer();
+        $pelanggan = $this->pelanggan->dropdown('nama');
         $this->load->view('header', ['title' => $this->title]);
-        $this->load->view('cuci/create');
-        $this->load->view('footer');
+        $this->load->view('order/create', compact('nomer', 'pelanggan', 'barang', 'cuci'));
+        $this->load->view('footer', ['scripts' => $this->scripts]);
     }
 
     public function insert()
@@ -42,7 +47,7 @@ class Cuci extends CI_Controller
 
         if ($this->form_validation->run()) {
             $status = 200;
-            $messege = ['create' => $this->cuci->insert($this->input->post())];
+            $messege = ['create' => $this->order->insert($this->input->post())];
         } else {
             $status = 422;
             $messege = $this->form_validation->error_array();
@@ -56,9 +61,9 @@ class Cuci extends CI_Controller
 
     public function edit($id = null)
     {
-        $cuci = $this->cuci->get($id);
+        $order = $this->order->get($id);
         $this->load->view('header', ['title' => $this->title]);
-        $this->load->view('cuci/edit', compact('cuci'));
+        $this->load->view('order/edit', compact('order'));
         $this->load->view('footer');
     }
 
@@ -68,10 +73,10 @@ class Cuci extends CI_Controller
             show_404();
         }
 
-        $cuci = $this->cuci->get($id);
+        $order = $this->order->get($id);
         if ($this->form_validation->run()) {
             $status = 200;
-            $messege = ['update' => $this->cuci->update($cuci->id, $this->input->post())];
+            $messege = ['update' => $this->order->update($order->id, $this->input->post())];
         } else {
             $status = 422;
             $messege = $this->form_validation->error_array();
@@ -89,10 +94,10 @@ class Cuci extends CI_Controller
             show_404();
         }
       
-        $cuci = $this->cuci->get($id);
+        $order = $this->order->get($id);
         $return = false;
-        if (!empty($cuci)) {
-            $return = $this->cuci->delete($cuci->id);
+        if (empty($order) == false) {
+            $return = $this->order->delete($order->id);
         }
 
         return $this->output->set_content_type('application/json')

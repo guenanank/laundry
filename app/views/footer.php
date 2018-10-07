@@ -1,28 +1,29 @@
 </div>
 </div>
 </div>
+</div>
 <!-- /.container-fluid-->
 <!-- /.content-wrapper-->
 <footer class="sticky-footer">
-  <div class="container">
-    <div class="text-center">
-      <small>Hak Cipta &copy; Kiki Laundry <?php echo date('Y') ?></small>
+  <div class="container my-auto">
+    <div class="copyright text-center my-auto">
+      <span>Hak Cipta &copy; Kiki Laundry <?php echo date('Y') ?></span>
     </div>
   </div>
 </footer>
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
-<i class="fa fa-angle-up"></i>
+  <i class="fas fa-angle-up"></i>
 </a>
 <!-- Logout Modal-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-      <span aria-hidden="true">×</span>
-    </button>
+          <span aria-hidden="true">×</span>
+        </button>
       </div>
       <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
       <div class="modal-footer">
@@ -32,26 +33,35 @@
     </div>
   </div>
 </div>
-</div>
 
 <div class="loading">Loading</div>
+
 <?php
 // Bootstrap core JavaScript
-echo script_tag('assets/js/jquery-3.3.1.js');
+echo script_tag('assets/js/jquery.min.js');
 echo script_tag('assets/js/moment-with-locales.min.js');
 echo script_tag('assets/js/bootstrap.bundle.min.js');
 // Core plugin JavaScript
 echo script_tag('assets/js/jquery.easing.min.js');
-echo script_tag('assets/js/jquery.dataTables.js');
-echo script_tag('assets/js/dataTables.bootstrap4.js');
-echo script_tag('assets/js/jquery.easing.min.js');
+// Page level plugin JavaScript
+echo script_tag('assets/js/jquery.dataTables.min.js');
+echo script_tag('assets/js/dataTables.bootstrap4.min.js');
 echo script_tag('assets/js/sweetalert.min.js');
-
 echo script_tag('assets/js/bootstrap-select.bundle.min.js');
 echo script_tag('assets/js/gijgo.min.js');
 echo script_tag('assets/js/jquery.mask.min.js');
-echo script_tag('assets/js/ajaxform.js');
+
+?>
+<script type="text/javascript">
+  var base_url = $('base').attr('href');
+  var price_format = function(number) {
+    var regex = parseFloat(number, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+    return 'Rp. ' + regex.slice(0, -3);
+  };
+</script>
+<?php
 // Custom scripts for all pages
+echo script_tag('assets/js/ajaxform.js');
 if(!empty($scripts)) {
   foreach($scripts as $script) {
     echo script_tag(sprintf('assets/js/%s.js', $script));

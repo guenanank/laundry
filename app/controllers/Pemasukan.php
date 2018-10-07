@@ -49,6 +49,10 @@ class Pemasukan extends CI_Controller
 
     public function insert()
     {
+        if ($this->input->is_ajax_request() == false) {
+            show_404();
+        }
+
         if ($this->form_validation->run()) {
             $status = 200;
             $messege = ['create' => $this->pemasukan->insert($this->input->post())];
@@ -76,6 +80,10 @@ class Pemasukan extends CI_Controller
 
     public function update($id = null)
     {
+        if ($this->input->is_ajax_request() == false) {
+            show_404();
+        }
+
         $pemasukan = $this->pemasukan->get($id);
         if ($this->form_validation->run()) {
             $status = 200;
@@ -93,6 +101,10 @@ class Pemasukan extends CI_Controller
 
     public function delete($id = null)
     {
+        if ($this->input->is_ajax_request() == false) {
+            show_404();
+        }
+      
         $pemasukan = $this->pemasukan->get($id);
         $return = false;
         if (!empty($pemasukan)) {
@@ -103,6 +115,5 @@ class Pemasukan extends CI_Controller
           ->set_status_header(200)
           ->set_output(json_encode([$return]));
         exit;
-
     }
 }
