@@ -1,7 +1,6 @@
 </div>
 </div>
 </div>
-</div>
 <!-- /.container-fluid-->
 <!-- /.content-wrapper-->
 <footer class="sticky-footer">
@@ -38,19 +37,19 @@
 
 <?php
 // Bootstrap core JavaScript
-echo script_tag('assets/js/jquery.min.js');
-echo script_tag('assets/js/moment-with-locales.min.js');
+echo script_tag('assets/js/jquery-3.3.1.js');
 echo script_tag('assets/js/bootstrap.bundle.min.js');
 // Core plugin JavaScript
 echo script_tag('assets/js/jquery.easing.min.js');
-// Page level plugin JavaScript
-echo script_tag('assets/js/jquery.dataTables.min.js');
-echo script_tag('assets/js/dataTables.bootstrap4.min.js');
+echo script_tag('assets/js/jquery.dataTables.js');
+echo script_tag('assets/js/dataTables.bootstrap4.js');
 echo script_tag('assets/js/sweetalert.min.js');
-echo script_tag('assets/js/bootstrap-select.bundle.min.js');
-echo script_tag('assets/js/gijgo.min.js');
-echo script_tag('assets/js/jquery.mask.min.js');
+echo script_tag('assets/js/bootstrap-datepicker.id.min.js');
+echo script_tag('assets/js/bootstrap-datepicker.min.js');
 
+echo script_tag('assets/js/bootstrap-select.bundle.min.js');
+echo script_tag('assets/js/jquery.mask.min.js');
+echo script_tag('assets/js/ajaxform.js');
 ?>
 <script type="text/javascript">
   var base_url = $('base').attr('href');
