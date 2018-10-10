@@ -37,18 +37,8 @@
         <ul class="sidenav-second-level collapse" id="administrasi">
           <li><?php echo anchor('pemasukan', 'Pemasukan') ?></li>
           <li><?php echo anchor('pengeluaran', 'Pengeluaran') ?></li>
-          <li><?php echo anchor('gaji', 'Gaji') ?></li>
         </ul>
       </li>
-      <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Laporan">
-        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#laporan" data-parent="#accordionMenu">
-          <i class="fa fa-fw fa-list"></i>
-          <span class="nav-link-text">Laporan</span>
-        </a>
-        <ul class="sidenav-second-level collapse" id="laporan">
-          <li><?php echo anchor('omset', 'Omzet') ?></li>
-        </ul>
-      </li> -->
     </ul>
     <ul class="navbar-nav sidenav-toggler">
       <li class="nav-item">

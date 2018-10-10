@@ -92,7 +92,7 @@ class Jasa extends CI_Controller
         if ($this->input->is_ajax_request() == false) {
             show_404();
         }
-      
+
         $jasa = $this->jasa->get($id);
         $return = false;
         if (!empty($jasa)) {

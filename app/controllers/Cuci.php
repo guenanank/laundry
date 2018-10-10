@@ -88,7 +88,7 @@ class Cuci extends CI_Controller
         if ($this->input->is_ajax_request() == false) {
             show_404();
         }
-      
+
         $cuci = $this->cuci->get($id);
         $return = false;
         if (!empty($cuci)) {

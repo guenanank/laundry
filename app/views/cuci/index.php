@@ -1,10 +1,18 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="pull-right">
-      <a href="<?php echo base_url('jasa') ?>" class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Jasa Cuci">
+      <a href="<?php echo base_url('jasa') ?>"
+        class="btn btn-dark"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Jasa Cuci">
         <i class="fa fa-cube"></i>
       </a>&nbsp;
-      <a href="<?php echo base_url('cuci/create') ?>" class="btn btn-success" data-toggle="tooltip" data-placement="bottom" title="Tambah <?php echo $title ?>">
+      <a href="<?php echo base_url('cuci/create') ?>"
+        class="btn btn-success"
+        data-toggle="tooltip"
+        data-placement="bottom"
+        title="Tambah <?php echo $title ?>">
         <i class="fa fa-plus"></i>
       </a>
     </div>
@@ -12,38 +20,50 @@
 </div>
 <div class="card mt-3">
   <div class="card-header">
-    <i class="fa fa-table">&nbsp;</i>Daftar <?php echo $title ?></div>
+    <i class="fa fa-table"></i>&nbsp;Daftar&nbsp;
+    <?php echo $title ?>
+  </div>
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-        <thead>
+      <table class="table table-bordered table-sm table-hover" id="dataTable">
+        <thead class="thead-light text-center">
           <tr>
-            <th class="text-center">Nama</th>
-            <th class="text-center">Kontrol</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Kontrol</th>
           </tr>
         </thead>
-        <tfoot>
+        <tfoot class="thead-light text-center">
           <tr>
-            <th class="text-center">Nama</th>
-            <th class="text-center">Kontrol</th>
+            <th>Nama</th>
+            <th>Kontrol</th>
           </tr>
         </tfoot>
         <tbody>
           <?php
             foreach($cuci as $cci) {
               ?>
-            <tr>
-              <td><?php echo $cci->nama ?></td>
-              <td class="text-center">
-                <a href="<?php echo base_url('cuci/edit/' . $cci->id) ?>" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Ubah <?php echo $cci->nama ?>">
+          <tr>
+            <td>
+              <?php echo $cci->nama ?>
+            </td>
+            <td class="text-center">
+              <a href="<?php echo base_url('cuci/edit/' . $cci->id) ?>"
+                  class="btn btn-info btn-sm"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Ubah <?php echo $cci->nama ?>">
                   <i class="fa fa-edit"></i>
                 </a>&nbsp;
-                <a href="<?php echo base_url('cuci/delete/' . $cci->id) ?>" class="btn btn-danger delete" data-toggle="tooltip" data-placement="top" title="Hapus <?php echo $cci->nama ?>?">
+              <a href="<?php echo base_url('cuci/delete/' . $cci->id) ?>"
+                  class="btn btn-danger btn-sm delete"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Hapus <?php echo $cci->nama ?>?">
                   <i class="fa fa-trash"></i>
                 </a>
-              </td>
-            </tr>
-            <?php
+            </td>
+          </tr>
+          <?php
             }
           ?>
         </tbody>
