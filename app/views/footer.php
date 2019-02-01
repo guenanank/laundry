@@ -133,6 +133,32 @@ if(!empty($scripts)) {
 
       });
     });
+
+    (function($) {
+			$('body').on('click', 'a#lunas, a#detil', function(e) {
+				e.preventDefault();
+        // console.log($(this).attr('href'));
+				$.get($(this).attr('href'), function(data) {
+          // console.log(data);
+					$(data).modal().on('shown.bs.modal', function(e) {
+						$('select.selectpicker').selectpicker();
+            $('.datepicker').datepicker({
+              format: 'yyyy-dd-mm',
+              uiLibrary: 'bootstrap4'
+            });
+						$('.data_table').DataTable();
+						$('form.ajax_form').submit(function(e) {
+							e.preventDefault();
+							e.stopImmediatePropagation();
+							$(this).ajax_form();
+						});
+					}).on('hidden.bs.modal', function() {
+						$(this).remove();
+					});
+				});
+			});
+
+		})(jQuery);
   </script>
   <?php echo script_tag('assets/js/sb-admin.min.js') ?>
   </body>

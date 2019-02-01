@@ -54,3 +54,5 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['harga/(:num)/cek'] = 'harga/cek_harga/$1';
+$route['order/(:num)'] = 'order/show/$1';
+$route['order/(:num)/pembayaran'] = 'order/payment/$1';

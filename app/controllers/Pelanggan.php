@@ -15,13 +15,15 @@ class Pelanggan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Pelanggan_model', 'pelanggan');
+        $this->load->model('Sales_model', 'sales');
 
         $this->form_validation->set_rules('nama', 'Nama', 'trim|required|max_length[127]');
     }
 
     public function index()
     {
-        $pelanggan = $this->pelanggan->get_all();
+        $pelanggan = $this->pelanggan->with('sales')->get_all();
+        // debug($pelanggan);
         $this->load->view('header', ['title' => $this->title]);
         $this->load->view('pelanggan/index', compact('pelanggan'));
         $this->load->view('footer');
@@ -29,8 +31,9 @@ class Pelanggan extends CI_Controller
 
     public function create()
     {
+        $sales = $this->sales->dropdown('nama');
         $this->load->view('header', ['title' => $this->title]);
-        $this->load->view('pelanggan/create');
+        $this->load->view('pelanggan/create', compact('sales'));
         $this->load->view('footer');
     }
 
@@ -56,9 +59,10 @@ class Pelanggan extends CI_Controller
 
     public function edit($id = null)
     {
-        $pelanggan = $this->pelanggan->get($id);
+        $pelanggan = $this->pelanggan->with('sales')->get($id);
+        $sales = $this->sales->dropdown('nama');
         $this->load->view('header', ['title' => $this->title]);
-        $this->load->view('pelanggan/edit', compact('pelanggan'));
+        $this->load->view('pelanggan/edit', compact('pelanggan', 'sales'));
         $this->load->view('footer');
     }
 
@@ -88,7 +92,7 @@ class Pelanggan extends CI_Controller
         if ($this->input->is_ajax_request() == false) {
             show_404();
         }
-      
+
         $pelanggan = $this->pelanggan->get($id);
         $return = false;
         if (!empty($pelanggan)) {

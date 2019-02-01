@@ -15,6 +15,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
      public $belongs_to = [
        'pelanggan' => ['primary_key' => 'id_pelanggan', 'model' => 'pelanggan_model']
      ];
+     public $has_many = ['detil' => ['primary_key' => 'id_order', 'model' => 'order_lengkap_model']];
      public $after_get = ['get_harga'];
      public $before_create = ['set_harga', 'created_at'];
      public $before_update = ['set_harga', 'updated_at'];

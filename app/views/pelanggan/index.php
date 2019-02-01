@@ -1,6 +1,13 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="pull-right">
+      <a href="<?php echo base_url('sales') ?>"
+        class="btn btn-dark"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Sales">
+        <i class="fa fa-blind"></i>
+      </a>&nbsp;
       <a href="<?php echo base_url('pelanggan/create') ?>"
         class="btn btn-success"
         data-toggle="tooltip"
@@ -24,6 +31,7 @@
             <th scope="col">Nama</th>
             <th scope="col">Alamat</th>
             <th scope="col">Telepon</th>
+            <th scope="col">Sales</th>
             <th scope="col">Kontrol</th>
           </tr>
         </thead>
@@ -32,6 +40,7 @@
             <th>Nama</th>
             <th>Alamat</th>
             <th>Telepon</th>
+            <th>Sales</th>
             <th>Kontrol</th>
           </tr>
         </tfoot>
@@ -48,6 +57,9 @@
             </td>
             <td>
               <?php echo $plg->telepon ?>
+            </td>
+            <td>
+              <?php echo isset($plg->sales) ? $plg->sales->nama : null ?>
             </td>
             <td class="text-center">
               <a href="<?php echo base_url('harga/index/' . $plg->id) ?>"

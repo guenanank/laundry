@@ -58,6 +58,24 @@
             ?>
       <div id="feedback-telepon"></div>
     </div>
+    <div class="form-group">
+      <?php echo form_label('Sales', 'pelanggan-sales', ['class' => 'col-form-label']) ?>
+      <select name="id_sales"
+          class="form-control selectpicker"
+          id="pelanggan-id_sales"
+          title="Pilih Sales <?php echo $title ?>">
+      <?php
+        foreach ($sales as $key => $value) {
+          ?>
+            <option value="<?php echo $key ?>" <?php echo set_select('id_sales', $key, $key == $pelanggan->id_sales ? true : false) ?>>
+              <?php echo $value ?>
+            </option>
+          <?php
+        }
+      ?>
+      </select>
+      <div id="feedback-id_sales"></div>
+    </div>
     <?php include APPPATH . 'views/button_form.php' ?>
     <?php echo form_close() ?>
   </div>
