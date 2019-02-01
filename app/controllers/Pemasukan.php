@@ -104,7 +104,7 @@ class Pemasukan extends CI_Controller
         if ($this->input->is_ajax_request() == false) {
             show_404();
         }
-      
+
         $pemasukan = $this->pemasukan->get($id);
         $return = false;
         if (!empty($pemasukan)) {

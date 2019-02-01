@@ -62,7 +62,7 @@
     <div class="form-row mb-2 barang" id="barang">
       <div class="form-group col-md-4">
         <?php echo form_label('Barang', 'jasa-id_barang') ?>
-        <?php echo form_dropdown('id_barang', $barang, null, ['class' => 'form-control selectpicker', 'id' => 'jasa-id_barang', 'title' => sprintf('Pilih %s', $title), 'data-live-search' => 'true']) ?>
+        <?php echo form_dropdown('id_barang', $barang, null, ['class' => 'form-control selectpicker', 'id' => 'jasa-id_barang', 'title' => sprintf('Pilih Barang %s', $title), 'data-live-search' => 'true']) ?>
         <div id="feedback-id_barang"></div>
       </div>
 
@@ -84,6 +84,9 @@
         <div id="feedback-open"></div>
       </div>
 
+      <div class="clearfix"></div>
+      <div class="clearfix"></div>
+      <div class="clearfix"></div>
       <div class="form-group col-md-2">
         <?php echo form_label('&nbsp;') ?>
         <button class="btn btn-warning" type="button" id="tambah">

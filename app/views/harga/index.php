@@ -27,7 +27,7 @@
 </div>
 <div class="card mt-3">
   <div class="card-header">
-    <i class="fa fa-table"></i>&nbsp;Daftar&nbsp;
+    <i class="fa fa-table"></i>&nbsp;Daftar
     <?php echo $title . '&nbsp;' . $pelanggan->nama ?>
   </div>
   <div class="card-body">
