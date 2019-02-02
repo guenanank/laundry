@@ -41,50 +41,50 @@
         </tfoot>
         <tbody>
           <?php
-            foreach($pemasukan as $pmsk) {
+            foreach($pemasukan as $row) {
               ?>
           <tr>
             <td class="text-center">
               <strong class="text-primary">
-                  <?php echo $pmsk->nomer ?>
+                  <?php echo $row->nomer ?>
                 </strong>
             </td>
             <td class="text-center">
-              <?php echo $pmsk->tanggal ?>
+              <?php echo $row->tanggal ?>
             </td>
             <td class="text-center">
-              <?php echo $pmsk->jenis ?><br />
-              <?php echo empty($pmsk->pelanggan) ? null : sprintf('(%s)', $pmsk->pelanggan->nama) ?>
+              <?php echo $row->jenis ?><br />
+              <?php echo empty($row->pelanggan) ? null : sprintf('(%s)', $row->pelanggan->nama) ?>
             </td>
             <td class="text-center">
-              <?php echo $pmsk->cara_bayar ?>
+              <?php echo $row->cara_bayar ?>
             </td>
             <td class="text-right">
               Rp.
-              <?php echo $pmsk->jumlah ?>
+              <?php echo $row->jumlah ?>
             </td>
             <td class="text-center">
-              <?php if($pmsk->jenis != 'Penambahan Biaya') { ?>
+              <?php if($row->jenis != 'Penambahan Biaya') { ?>
               <a href="#"
                     class="btn btn-warning"
                     data-toggle="tooltip"
                     data-placement="top"
-                    title="Cetak <?php echo sprintf('%s %s', $title, $pmsk->nomer) ?>">
+                    title="Cetak <?php echo sprintf('%s %s', $title, $row->nomer) ?>">
                     <i class="fa fa-print"></i>
                   </a>&nbsp;
               <?php } ?>
-              <a href="<?php echo base_url('pemasukan/edit/' . $pmsk->id) ?>"
+              <a href="<?php echo base_url('pemasukan/edit/' . $row->id) ?>"
                   class="btn btn-info"
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="Ubah <?php echo sprintf('%s %s', $title, $pmsk->nomer) ?>">
+                  title="Ubah <?php echo sprintf('%s %s', $title, $row->nomer) ?>">
                   <i class="fa fa-edit"></i>
                 </a>&nbsp;
-              <a href="<?php echo base_url('pemasukan/delete/' . $pmsk->id) ?>"
+              <a href="<?php echo base_url('pemasukan/delete/' . $row->id) ?>"
                   class="btn btn-danger delete"
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="Hapus <?php echo sprintf('%s %s', $title, $pmsk->nomer) ?>?">
+                  title="Hapus <?php echo sprintf('%s %s', $title, $row->nomer) ?>?">
                   <i class="fa fa-trash"></i>
                 </a>
             </td>

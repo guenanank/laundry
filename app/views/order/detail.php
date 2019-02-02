@@ -3,43 +3,49 @@
     <div class="modal-content">
       <?php echo form_open('#', ['class' => ''], ['id' => $order->id, 'dicetak' => true]) ?>
       <div class="modal-header">
-        <h4 class="modal-title">Nomer :
+        <h5 class="modal-title">Nomer :
             <strong class="text-primary">
               <?php echo $order->nomer ?>
             </strong>
             <span class="pull-right">
               Tgl Order&nbsp;:&nbsp;<?php echo $order->tanggal ?>
             </span>
-        </h4>
+        </h5>
       </div>
-      <div class="modal-body container">
-        <div class="form-group">
-          <?php echo form_label('Nama pelanggan', 'id_pelanggan', ['class' => 'col-form-label']) ?>
-          <?php echo form_input([
-              'name' => 'id_pelanggan',
-              'id' => 'id_pelanggan',
-              'class' => 'form-control',
-              'readonly' => true,
-              'value' => $order->pelanggan->nama
-              ])
-              ?>
-          <div id="feedback-id_pelanggan"></div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <?php echo form_label('Nama pelanggan', 'pelanggan', [
+            'class' => 'col-sm-3 offset-sm-1 col-form-label'
+            ]) ?>
+          <div class="col-sm-7">
+            <?php echo form_input([
+                'name' => 'pelanggan',
+                'id' => 'pelanggan',
+                'class' => 'form-control-plaintext',
+                'readonly' => true,
+                'value' => $order->pelanggan->nama
+                ])
+                ?>
+            <div id="feedback-pelanggan"></div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <?php echo form_label('Tanggal Kirim', 'dikirim', [
+            'class' => 'col-sm-3 offset-sm-1 col-form-label'
+            ]) ?>
+          <div class="col-sm-7">
+            <?php echo form_input([
+                'name' => 'dikirim',
+                'id' => 'dikirim',
+                'class' => 'form-control',
+                'readonly' => is_null($order->dikirim) ? false : true,
+                'value' => $order->dikirim
+                ])
+                ?>
+            <div id="feedback-dikirim"></div>
+          </div>
         </div>
 
-        <div class="form-group">
-          <?php echo form_label('Tanggal Kirim', 'dikirim', ['class' => 'col-form-label']) ?>
-          <?php echo form_input([
-              'name' => 'dikirim',
-              'id' => 'dikirim',
-              'class' => sprintf('form-control %s', is_null($order->dikirim) ? 'datepicker' : null),
-              'readonly' => is_null($order->dikirim) ? false : true,
-              'value' => $order->dikirim
-              ])
-              ?>
-          <div id="feedback-dikirim"></div>
-        </div>
-
-        <div class="clearfix">&nbsp;</div>
         <div class="table-responsive">
           <table class="table table-bordered table-sm table-hover">
             <thead class="thead-light text-center">
@@ -54,15 +60,15 @@
                 <th scope="col">Subtotal Cicil</th>
               </tr>
             </thead>
-            <tfoot class="thead-light text-center">
+            <tfoot class="thead-light text-right">
               <tr>
-                <td colspan="6" class="text-right">
+                <td colspan="6">
                   <strong class="text-primary">Total</strong>
                 </td>
-                <td class="text-right">
+                <td>
                   <strong class="text-primary">Rp. <?php echo $order->jumlah_tunai ?></strong>
                 </td>
-                <td class="text-right">
+                <td>
                   <strong class="text-primary">Rp. <?php echo $order->jumlah_cicil ?></strong>
                 </td>
               </tr>
@@ -111,7 +117,6 @@
         <button type="submit" class="btn btn-dark btn-sm">
             <i class="fa fa-print"></i>&nbsp;Cetak surat jalan
         </button>
-
         <?php if($order->dicetak == false AND is_null($order->pembayaran)) { ?>
         <a href="<?php echo base_url('order/' . $ord->id . '/edit') ?>"
           class="btn btn-primary btn-sm">
@@ -121,7 +126,7 @@
         <button type="button"
           class="btn btn-secondary btn-sm"
           data-dismiss="modal">
-            <i class="zmdi zmdi-close"></i>&nbsp;Tutup
+            <i class="fa fa-close"></i>&nbsp;Tutup
         </button>
       </div>
       <?php echo form_close() ?>

@@ -47,11 +47,21 @@ class Order extends CI_Controller
         exit;
     }
 
-    public function payment()
+    public function payment($id)
     {
         if ($this->input->is_ajax_request() == false) {
             show_404();
         }
+
+        $this->load->model('Pemasukan_model', 'pemasukan');
+        $cara_bayar = $this->pemasukan->cara_bayar();
+        $order = $this->order->get($id);
+        $output = $this->load->view('order/payment', compact('cara_bayar', 'order'), true);
+        return $this->output->set_content_type('html', 'utf-8')
+          ->set_status_header(200)
+          ->set_output($output);
+
+        exit;
     }
 
     public function create()

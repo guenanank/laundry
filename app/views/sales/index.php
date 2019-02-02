@@ -38,23 +38,23 @@
         </tfoot>
         <tbody>
           <?php
-            foreach($sales as $sls) {
+            foreach($sales as $row) {
               ?>
             <tr>
-              <td><?php echo $sls->nama ?></td>
+              <td><?php echo $row->nama ?></td>
               <td class="text-center">
-                <a href="<?php echo base_url('sales/edit/' . $sls->id) ?>"
+                <a href="<?php echo base_url('sales/edit/' . $row->id) ?>"
                   class="btn btn-info btn-sm"
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="Ubah <?php echo $sls->nama ?>">
+                  title="Ubah <?php echo $row->nama ?>">
                   <i class="fa fa-edit"></i>
                 </a>&nbsp;
-                <a href="<?php echo base_url('sales/delete/' . $sls->id) ?>"
+                <a href="<?php echo base_url('sales/delete/' . $row->id) ?>"
                   class="btn btn-danger btn-sm delete"
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="Hapus <?php echo $sls->nama ?>?">
+                  title="Hapus <?php echo $row->nama ?>?">
                   <i class="fa fa-trash"></i>
                 </a>
               </td>

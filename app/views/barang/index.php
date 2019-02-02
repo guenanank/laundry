@@ -31,23 +31,23 @@
         </tfoot>
         <tbody>
           <?php
-            foreach($barang as $brg) {
+            foreach($barang as $row) {
               ?>
             <tr>
-              <td><?php echo $brg->nama ?></td>
+              <td><?php echo $row->nama ?></td>
               <td class="text-center">
-                <a href="<?php echo base_url('barang/edit/' . $brg->id) ?>"
+                <a href="<?php echo base_url('barang/edit/' . $row->id) ?>"
                   class="btn btn-info btn-sm"
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="Ubah <?php echo $brg->nama ?>">
+                  title="Ubah <?php echo $row->nama ?>">
                   <i class="fa fa-edit"></i>
                 </a>&nbsp;
-                <a href="<?php echo base_url('barang/delete/' . $brg->id) ?>"
+                <a href="<?php echo base_url('barang/delete/' . $row->id) ?>"
                   class="btn btn-danger btn-sm delete"
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="Hapus <?php echo $brg->nama ?>?">
+                  title="Hapus <?php echo $row->nama ?>?">
                   <i class="fa fa-trash"></i>
                 </a>
               </td>

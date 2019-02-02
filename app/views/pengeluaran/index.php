@@ -39,31 +39,31 @@
         </tfoot>
         <tbody>
           <?php
-            foreach($pengeluaran as $plrn) {
+            foreach($pengeluaran as $row) {
               ?>
           <tr>
             <td class="text-center">
-              <?php echo $plrn->tanggal ?>
+              <?php echo $row->tanggal ?>
             </td>
             <td class="text-center">
-              <?php echo $plrn->jenis ?>
+              <?php echo $row->jenis ?>
             </td>
             <td>
-              <?php echo $plrn->keterangan ?>
+              <?php echo $row->keterangan ?>
             </td>
             <td class="text-right">
               Rp.
-              <?php echo $plrn->jumlah ?>
+              <?php echo $row->jumlah ?>
             </td>
             <td class="text-center">
-              <a href="<?php echo base_url('pengeluaran/edit/' . $plrn->id) ?>"
+              <a href="<?php echo base_url('pengeluaran/edit/' . $row->id) ?>"
                   class="btn btn-info"
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Ubah <?php echo $title ?>">
                   <i class="fa fa-edit"></i>
                 </a>&nbsp;
-              <a href="<?php echo base_url('pengeluaran/delete/' . $plrn->id) ?>"
+              <a href="<?php echo base_url('pengeluaran/delete/' . $row->id) ?>"
                   class="btn btn-danger delete"
                   data-toggle="tooltip"
                   data-placement="top"

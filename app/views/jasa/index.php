@@ -38,23 +38,23 @@
         </tfoot>
         <tbody>
           <?php
-            foreach ($jasa as $jsa) {
+            foreach ($jasa as $row) {
                 ?>
             <tr>
-              <td><?php echo $jsa->nama ?></td>
+              <td><?php echo $row->nama ?></td>
               <td class="text-center">
-                <a href="<?php echo base_url('jasa/edit/' . $jsa->id) ?>"
+                <a href="<?php echo base_url('jasa/edit/' . $row->id) ?>"
                   class="btn btn-info btn-sm"
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="Ubah <?php echo $jsa->nama ?>">
+                  title="Ubah <?php echo $row->nama ?>">
                   <i class="fa fa-edit"></i>
                 </a>&nbsp;
-                <a href="<?php echo base_url('jasa/delete/' . $jsa->id) ?>"
+                <a href="<?php echo base_url('jasa/delete/' . $row->id) ?>"
                   class="btn btn-danger btn-sm delete"
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="Hapus <?php echo $jsa->nama ?>?">
+                  title="Hapus <?php echo $row->nama ?>?">
                   <i class="fa fa-trash"></i>
                 </a>
               </td>

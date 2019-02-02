@@ -46,34 +46,34 @@
         </tfoot>
         <tbody>
           <?php
-            foreach($karyawan as $kry) {
+            foreach($karyawan as $row) {
               ?>
           <tr>
             <td>
-              <?php echo $kry->nama ?>
+              <?php echo $row->nama ?>
             </td>
             <td>
-              <?php echo $kry->kontak ?>
+              <?php echo $row->kontak ?>
             </td>
             <td>
-              <?php echo $kry->bagian ?>
+              <?php echo $row->bagian ?>
             </td>
             <td class="text-center">
-              <?php echo $kry->mulai_kerja ?>
+              <?php echo $row->mulai_kerja ?>
             </td>
             <td class="text-center">
-              <a href="<?php echo base_url('karyawan/edit/' . $kry->id) ?>"
+              <a href="<?php echo base_url('karyawan/edit/' . $row->id) ?>"
                   class="btn btn-info btn-sm"
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="Ubah <?php echo $kry->nama ?>">
+                  title="Ubah <?php echo $row->nama ?>">
                   <i class="fa fa-edit"></i>
                 </a>&nbsp;
-              <a href="<?php echo base_url('karyawan/delete/' . $kry->id) ?>"
+              <a href="<?php echo base_url('karyawan/delete/' . $row->id) ?>"
                   class="btn btn-danger btn-sm delete"
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="Hapus <?php echo $kry->nama ?>?">
+                  title="Hapus <?php echo $row->nama ?>?">
                   <i class="fa fa-trash"></i>
                 </a>
             </td>

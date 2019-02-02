@@ -39,49 +39,49 @@
         </tfoot>
         <tbody>
           <?php
-            foreach($order as $ord) {
+            foreach($order as $row) {
               ?>
             <tr>
               <td class="text-center">
                 <strong class="text-primary">
-                  <?php echo $ord->nomer ?>
+                  <?php echo $row->nomer ?>
                 </strong>
               </td>
               <td class="text-center">
-                <?php echo $ord->tanggal ?>
+                <?php echo $row->tanggal ?>
               </td>
               <td class="text-center">
-                <?php echo $ord->pelanggan->nama ?>
+                <?php echo $row->pelanggan->nama ?>
               </td>
               <td class="text-right">
-                Rp. <?php echo $ord->jumlah_tunai ?>
+                Rp. <?php echo $row->jumlah_tunai ?>
               </td>
               <td class="text-right">
-                Rp. <?php echo $ord->jumlah_cicil ?>
+                Rp. <?php echo $row->jumlah_cicil ?>
               </td>
               <td class="text-center">
-                <a href="<?php echo base_url('order/' . $ord->id) ?>"
+                <a href="<?php echo base_url('order/' . $row->id) ?>"
                   class="btn btn-sm btn-secondary"
-                  title="Detil order nomer <?php echo $ord->nomer ?>"
+                  title="Detil order nomer <?php echo $row->nomer ?>"
                   data-toggle="tooltip"
                   id="detil">
               		<span class="fa fa-search"></span>
             		</a>&nbsp;
-                <?php if(is_null($ord->pembayaran)) { ?>
-  							<a href="<?php echo base_url('order/' . $ord->id . '/pembayaran') ?>"
+                <?php if(is_null($row->pembayaran)) { ?>
+  							<a href="<?php echo base_url('order/' . $row->id . '/pembayaran') ?>"
                   class="btn btn-sm btn-info"
-                  title="Lunas order nomer <?php echo $ord->nomer ?>"
+                  title="Lunas order nomer <?php echo $row->nomer ?>"
                   data-toggle="tooltip"
                   data-placement="bottom" id="lunas">
               		<span class="fa fa-check"></span>
             		</a>&nbsp;
   							<?php } ?>
-                <?php if($ord->dicetak == false AND is_null($ord->pembayaran)) { ?>
-                <a href="<?php echo base_url('order/delete/' . $ord->id) ?>"
+                <?php if($row->dicetak == false AND is_null($row->pembayaran)) { ?>
+                <a href="<?php echo base_url('order/delete/' . $row->id) ?>"
                   class="btn btn-danger btn-sm delete"
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="Hapus <?php echo $ord->nomer ?>?">
+                  title="Hapus <?php echo $row->nomer ?>?">
                   <i class="fa fa-trash"></i>
                 </a>
                 <?php } ?>

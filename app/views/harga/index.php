@@ -53,30 +53,30 @@
         </tfoot>
         <tbody>
           <?php
-            foreach ($harga as $hrg) {
+            foreach ($harga as $row) {
                 ?>
           <tr>
             <td>
-              <?php echo $hrg->barang->nama ?>
+              <?php echo $row->barang->nama ?>
             </td>
             <td>
-              <?php echo $hrg->cuci->nama ?>
+              <?php echo $row->cuci->nama ?>
             </td>
             <td class="text-right">Rp.
-              <?php echo $hrg->tunai ?>
+              <?php echo $row->tunai ?>
             </td>
             <td class="text-right">Rp.
-              <?php echo $hrg->cicil ?>
+              <?php echo $row->cicil ?>
             </td>
             <td class="text-center">
-              <a href="<?php echo base_url('harga/edit/' . sprintf('%s/%s/%s', $hrg->id_pelanggan, $hrg->id_barang, $hrg->id_cuci)) ?>"
+              <a href="<?php echo base_url('harga/edit/' . sprintf('%s/%s/%s', $row->id_pelanggan, $row->id_barang, $row->id_cuci)) ?>"
                     class="btn btn-info btn-sm"
                     data-toggle="tooltip"
                     data-placement="top"
                     title="Ubah">
                     <i class="fa fa-edit"></i>
                   </a>&nbsp;
-              <a href="<?php echo base_url('harga/delete/' . sprintf('%s/%s/%s', $hrg->id_pelanggan, $hrg->id_barang, $hrg->id_cuci)) ?>"
+              <a href="<?php echo base_url('harga/delete/' . sprintf('%s/%s/%s', $row->id_pelanggan, $row->id_barang, $row->id_cuci)) ?>"
                     class="btn btn-danger btn-sm delete"
                     data-toggle="tooltip"
                     data-placement="top"

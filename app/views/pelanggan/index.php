@@ -46,41 +46,41 @@
         </tfoot>
         <tbody>
           <?php
-            foreach($pelanggan as $plg) {
+            foreach($pelanggan as $row) {
               ?>
           <tr>
             <td>
-              <?php echo $plg->nama ?>
+              <?php echo $row->nama ?>
             </td>
             <td>
-              <?php echo $plg->alamat ?>
+              <?php echo $row->alamat ?>
             </td>
             <td>
-              <?php echo $plg->telepon ?>
+              <?php echo $row->telepon ?>
             </td>
             <td>
-              <?php echo isset($plg->sales) ? $plg->sales->nama : null ?>
+              <?php echo isset($row->sales) ? $row->sales->nama : null ?>
             </td>
             <td class="text-center">
-              <a href="<?php echo base_url('harga/index/' . $plg->id) ?>"
+              <a href="<?php echo base_url('harga/index/' . $row->id) ?>"
                   class="btn btn-warning btn-sm"
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="Harga <?php echo $plg->nama ?>">
+                  title="Harga <?php echo $row->nama ?>">
                   <i class="fa fa-shopping-cart"></i>
                 </a>&nbsp;
-              <a href="<?php echo base_url('pelanggan/edit/' . $plg->id) ?>"
+              <a href="<?php echo base_url('pelanggan/edit/' . $row->id) ?>"
                   class="btn btn-info btn-sm"
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="Ubah <?php echo $plg->nama ?>">
+                  title="Ubah <?php echo $row->nama ?>">
                   <i class="fa fa-edit"></i>
                 </a>&nbsp;
-              <a href="<?php echo base_url('pelanggan/delete/' . $plg->id) ?>"
+              <a href="<?php echo base_url('pelanggan/delete/' . $row->id) ?>"
                   class="btn btn-danger btn-sm delete"
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="Hapus <?php echo $plg->nama ?>?">
+                  title="Hapus <?php echo $row->nama ?>?">
                   <i class="fa fa-trash"></i>
                 </a>
             </td>
