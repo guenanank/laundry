@@ -9,6 +9,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  */
 class Barang extends CI_Controller
 {
+    protected $scripts = ['barang'];
     protected $title = 'Master Data Barang';
 
     public function __construct()
@@ -21,10 +22,53 @@ class Barang extends CI_Controller
 
     public function index()
     {
-        $barang = $this->barang->get_all();
+        // $barang = $this->barang->get_all();
         $this->load->view('header', ['title' => $this->title]);
-        $this->load->view('barang/index', compact('barang'));
-        $this->load->view('footer');
+        // $this->load->view('barang/index', compact('barang'));
+        $this->load->view('barang/index');
+        $this->load->view('footer', ['scripts' => $this->scripts]);
+    }
+
+    public function dt_source()
+    {
+        if ($this->input->is_ajax_request() == false) {
+            show_404();
+        }
+
+        $columns = ['id', 'nama'];
+        $start = (int) $this->input->post('start');
+        $length = (int) $this->input->post('length');
+        $search = $this->input->post('search');
+        $order = $this->input->post('order');
+        $records_total = (int) $this->barang->count_all();
+        $records_filtered = $records_total;
+
+        $this->barang->_database->select($columns);
+        if (empty($search['value']) == false) {
+            $this->barang->_database->like('nama', $search['value']);
+            // $records_filtered = $this->barang->_database->get($this->barang->_table)->num_rows();
+            $records_filtered = $this->barang->count_all();
+            $this->barang->_database->reset_query();
+        }
+
+        if (empty($order[0]) == false) {
+            $this->barang->_database->order_by($order[0]['column'], $order[0]['dir']);
+        }
+
+        $this->barang->_database->limit($length, $start);
+        $barang = $this->barang->_database->get($this->barang->_table);
+        // debug($barang);
+        $barang_data = [
+          'draw' => (int) $this->input->post('draw'),
+          'recordsTotal' => $records_total,
+          'recordsFiltered' => $records_filtered,
+          'data' => $barang->result()
+        ];
+
+        return $this->output->set_content_type('application/json')
+          ->set_status_header(200)
+          ->set_output(json_encode($barang_data));
+        exit;
     }
 
     public function create()

@@ -20,42 +20,16 @@
         <thead class="thead-light text-center">
           <tr>
             <th scope="col">Nama</th>
-            <th scope="col">Kontrol</th>
+            <!-- <th scope="col">Kontrol</th> -->
           </tr>
         </thead>
         <tfoot class="thead-light text-center">
           <tr>
             <th>Nama</th>
-            <th>Kontrol</th>
+            <!-- <th>Kontrol</th> -->
           </tr>
         </tfoot>
-        <tbody>
-          <?php
-            foreach($barang as $row) {
-              ?>
-            <tr>
-              <td><?php echo $row->nama ?></td>
-              <td class="text-center">
-                <a href="<?php echo base_url('barang/edit/' . $row->id) ?>"
-                  class="btn btn-info btn-sm"
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Ubah <?php echo $row->nama ?>">
-                  <i class="fa fa-edit"></i>
-                </a>&nbsp;
-                <a href="<?php echo base_url('barang/delete/' . $row->id) ?>"
-                  class="btn btn-danger btn-sm delete"
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Hapus <?php echo $row->nama ?>?">
-                  <i class="fa fa-trash"></i>
-                </a>
-              </td>
-            </tr>
-            <?php
-            }
-          ?>
-        </tbody>
+
       </table>
     </div>
   </div>

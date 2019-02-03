@@ -1,6 +1,6 @@
 (function($) {
 
-  // var base_url = $('base').attr('href');
+  // var baseUrl = $('base').attr('href');
   var data, i = $('table#daftar tbody').find('tr').length;
   var tunai = [],
     cicil = [];
@@ -26,7 +26,7 @@
   };
 
   if ($('input[name=id_pelanggan]')[0]) {
-    $.getJSON(base_url + '/harga/' + $('input[name=id_pelanggan]').val() + '/cek', function(data) {
+    $.getJSON(baseUrl + '/harga/' + $('input[name=id_pelanggan]').val() + '/cek', function(data) {
       harga(data);
     });
 
@@ -39,7 +39,7 @@
     $('select[name="id_pelanggan"]').on('change', function() {
       $('.loading').fadeIn();
       clear();
-      $.getJSON(base_url + '/harga/' + $(this).val() + '/cek', function(data) {
+      $.getJSON(baseUrl + '/harga/' + $(this).val() + '/cek', function(data) {
         harga(data);
       }).done(function() {
         $('.loading').fadeOut();
@@ -135,7 +135,7 @@
       tbody += '</td>';
 
       tbody += '<td class="text-center">';
-      tbody += '<button type="button" class="btn btn-danger hapus" data-tunai="' + jumlah_tunai + '" data-cicil="' + jumlah_cicil + '">';
+      tbody += '<button type="button" class="btn btn-danger btn-sm hapus" data-tunai="' + jumlah_tunai + '" data-cicil="' + jumlah_cicil + '">';
       tbody += '<i class="fa fa-close"></i></button>';
       tbody += '</td>';
       tbody += '</tr>';

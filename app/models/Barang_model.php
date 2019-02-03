@@ -12,6 +12,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
  {
     public $_table = 'barang';
     public $soft_delete = true;
+    public $validate = [
+      [
+        'field' => 'nama',
+        'label' => 'Nama',
+        'rules' => 'trim|required|max_length[127]'
+      ]
+    ];
     public $before_create = ['created_at'];
     public $before_update = ['updated_at'];
 

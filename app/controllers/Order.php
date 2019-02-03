@@ -43,7 +43,6 @@ class Order extends CI_Controller
         return $this->output->set_content_type('html', 'utf-8')
           ->set_status_header(200)
           ->set_output($output);
-
         exit;
     }
 
@@ -60,7 +59,6 @@ class Order extends CI_Controller
         return $this->output->set_content_type('html', 'utf-8')
           ->set_status_header(200)
           ->set_output($output);
-
         exit;
     }
 
